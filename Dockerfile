@@ -18,4 +18,6 @@ FROM alpine:3.11.2 AS production
 
 RUN apk --no-cache add ca-certificates tzdata
 COPY --from=development /chirpstack-network-server/build/chirpstack-network-server /usr/bin/chirpstack-network-server
+RUN addgroup -S chirpstack_ns && adduser -S chirpstack_ns -G chirpstack_ns
+USER chirpstack_ns
 ENTRYPOINT ["/usr/bin/chirpstack-network-server"]

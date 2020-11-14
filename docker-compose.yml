@@ -3,7 +3,7 @@ services:
   chirpstack-network-server:
     build:
       context: .
-      dockerfile: Dockerfile-devel
+      dockerfile: Dockerfile
     command: make serve
     volumes:
       - ./:/chirpstack-network-server
