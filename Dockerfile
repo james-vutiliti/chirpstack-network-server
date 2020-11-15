@@ -20,4 +20,5 @@ RUN apk --no-cache add ca-certificates tzdata
 COPY --from=development /chirpstack-network-server/build/chirpstack-network-server /usr/bin/chirpstack-network-server
 RUN addgroup -S chirpstack_ns && adduser -S chirpstack_ns -G chirpstack_ns
 USER chirpstack_ns
+COPY configuration/chirpstack-network-server/chirpstack-network-server.toml /etc/chirpstack-network-server/chirpstack-network-server.toml
 ENTRYPOINT ["/usr/bin/chirpstack-network-server"]
